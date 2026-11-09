@@ -46,27 +46,27 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F9FAFB] text-slate-800 font-sans selection:bg-[#76993D] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#06402B] text-white font-sans selection:bg-[#39FF14] selection:text-slate-900">
       
       {/* HEADER / NAVEGAÇÃO */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-[#06402B]/95 backdrop-blur-md border-b border-white/10 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* LOGO UNIFICADA KTMR */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('home')}>
             <div className="flex items-center">
-              <span className="text-2xl font-black tracking-tighter text-[#76993D]">K</span>
-              <span className="text-2xl font-black tracking-tight text-slate-900">TMR</span>
+              <span className="text-2xl font-black tracking-tighter text-[#39FF14]">K</span>
+              <span className="text-2xl font-black tracking-tight text-white">TMR</span>
             </div>
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-white/80">
             {['home', 'quemsomos', 'categorias', 'galeria', 'sustentabilidade', 'contato'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`capitalize transition-colors hover:text-[#76993D] ${activeTab === tab ? 'text-[#76993D] font-bold border-b-2 border-[#76993D] pb-1' : ''}`}
+                className={`capitalize transition-colors hover:text-[#39FF14] ${activeTab === tab ? 'text-[#39FF14] font-bold border-b-2 border-[#39FF14] pb-1' : ''}`}
               >
                 {tab === 'quemsomos' ? 'Quem Somos' : tab === 'galeria' ? 'Galeria De Projetos' : tab}
               </button>
@@ -76,26 +76,26 @@ export default function App() {
           <div className="hidden md:block">
             <button 
               onClick={() => setActiveTab('contato')}
-              className="bg-[#76993D] hover:bg-[#628A4C] text-white font-bold px-5 py-2.5 rounded-lg transition-all shadow-md flex items-center gap-2"
+              className="bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold px-5 py-2.5 rounded-lg transition-all shadow-md flex items-center gap-2"
             >
               <Phone className="w-4 h-4" /> Solicitar Orçamento
             </button>
           </div>
 
           {/* Mobile menu button */}
-          <button className="md:hidden text-slate-700 hover:text-slate-900" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button className="md:hidden text-white hover:text-[#39FF14]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
 
         {/* Mobile Nav Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+          <div className="md:hidden bg-[#05331b] border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
             {['home', 'quemsomos', 'categorias', 'galeria', 'sustentabilidade', 'contato'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => { setActiveTab(tab); setMobileMenuOpen(false); }}
-                className={`block w-full text-left py-2 px-3 rounded-md capitalize font-medium ${activeTab === tab ? 'bg-[#76993D]/10 text-[#76993D]' : 'text-slate-700 hover:bg-slate-50'}`}
+                className={`block w-full text-left py-2 px-3 rounded-md capitalize font-medium ${activeTab === tab ? 'bg-white/10 text-[#39FF14]' : 'text-white/80 hover:bg-white/5'}`}
               >
                 {tab === 'quemsomos' ? 'Quem Somos' : tab === 'galeria' ? 'Galeria De Projetos' : tab}
               </button>
@@ -110,23 +110,23 @@ export default function App() {
         {/* 1. HOME */}
         {activeTab === 'home' && (
           <div>
-            {/* Hero Section sem imagem de fundo (fundo limpo) */}
+            {/* Hero Section */}
             <section className="relative min-h-[75vh] flex items-center justify-center px-4 py-20">
               <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#76993D]/10 border border-[#76993D]/30 text-xs font-semibold text-[#76993D] shadow-sm">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#39FF14]/30 text-xs font-semibold text-[#39FF14] shadow-sm">
                   <Sparkles className="w-3.5 h-3.5" /> Transformando eventos em grandes experiências
                 </div>
-                <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-tight">
-                  Do planejamento à montagem, criamos espaços que <span className="text-[#76993D]">conectam marcas e pessoas.</span>
+                <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
+                  Do planejamento à montagem, criamos espaços que <span className="text-[#39FF14]">conectam marcas e pessoas.</span>
                 </h1>
-                <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-light">
+                <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto font-light">
                   Soluções completas em montagem de stands e ambientes para feiras, congressos e eventos corporativos, unindo criatividade, estrutura e eficiência.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                  <button onClick={() => setActiveTab('galeria')} className="w-full sm:w-auto bg-[#76993D] hover:bg-[#628A4C] text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
+                  <button onClick={() => setActiveTab('galeria')} className="w-full sm:w-auto bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
                     Ver Projetos <ArrowRight className="w-5 h-5" />
                   </button>
-                  <button onClick={() => setActiveTab('contato')} className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-800 font-semibold px-8 py-3.5 rounded-xl border border-slate-300 transition-all shadow-sm">
+                  <button onClick={() => setActiveTab('contato')} className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-xl border border-white/20 transition-all shadow-sm">
                     Falar com Atendimento
                   </button>
                 </div>
@@ -134,63 +134,63 @@ export default function App() {
             </section>
 
             {/* Diferenciais */}
-            <section className="py-20 bg-white border-y border-slate-200">
+            <section className="py-20 bg-[#05331b] border-y border-white/10">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-[#F9FAFB] p-8 rounded-2xl border border-slate-200 hover:border-[#76993D] transition-all shadow-sm">
-                  <div className="w-12 h-12 bg-[#76993D]/15 rounded-xl flex items-center justify-center text-[#76993D] mb-6">
+                <div className="bg-[#06402B] p-8 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all shadow-sm">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
                     <Clock className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Comprometimento com Prazos</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">Rigor absoluto no cronograma para que seu evento aconteça exatamente como planejado.</p>
+                  <h3 className="text-xl font-bold text-white mb-3">Comprometimento com Prazos</h3>
+                  <p className="text-white/70 text-sm leading-relaxed">Rigor absoluto no cronograma para que seu evento aconteça exatamente como planejado.</p>
                 </div>
-                <div className="bg-[#F9FAFB] p-8 rounded-2xl border border-slate-200 hover:border-[#76993D] transition-all shadow-sm">
-                  <div className="w-12 h-12 bg-[#76993D]/15 rounded-xl flex items-center justify-center text-[#76993D] mb-6">
+                <div className="bg-[#06402B] p-8 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all shadow-sm">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
                     <ShieldCheck className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Agilidade em Cada Etapa</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">Processos bem definidos e suporte dinâmico em todas as fases do projeto.</p>
+                  <h3 className="text-xl font-bold text-white mb-3">Agilidade em Cada Etapa</h3>
+                  <p className="text-white/70 text-sm leading-relaxed">Processos bem definidos e suporte dinâmico em todas as fases do projeto.</p>
                 </div>
-                <div className="bg-[#F9FAFB] p-8 rounded-2xl border border-slate-200 hover:border-[#76993D] transition-all shadow-sm">
-                  <div className="w-12 h-12 bg-[#76993D]/15 rounded-xl flex items-center justify-center text-[#76993D] mb-6">
+                <div className="bg-[#06402B] p-8 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all shadow-sm">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
                     <Award className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Acabamento que Impressiona</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">Padrão estético elevado para destacar a sua marca e atrair o público ideal.</p>
+                  <h3 className="text-xl font-bold text-white mb-3">Acabamento que Impressiona</h3>
+                  <p className="text-white/70 text-sm leading-relaxed">Padrão estético elevado para destacar a sua marca e atrair o público ideal.</p>
                 </div>
               </div>
             </section>
 
             {/* Depoimentos de Clientes */}
-            <section className="py-20 bg-[#F9FAFB]">
+            <section className="py-20 bg-[#06402B]">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-2xl mx-auto mb-16">
-                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Depoimentos de Clientes</h2>
-                  <p className="text-slate-600">O reconhecimento de quem confia na nossa entrega e profissionalismo.</p>
+                  <h2 className="text-3xl font-bold text-white mb-4">Depoimentos de Clientes</h2>
+                  <p className="text-white/70">O reconhecimento de quem confia na nossa entrega e profissionalismo.</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative">
-                    <div className="flex text-[#76993D] mb-4 gap-1">
+                  <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative">
+                    <div className="flex text-[#39FF14] mb-4 gap-1">
                       {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                     </div>
-                    <p className="text-slate-700 italic mb-6">"A montagem do stand superou todas as expectativas. Pontualidade impecável e um acabamento de primeiríssima linha que chamou atenção na feira inteira."</p>
+                    <p className="text-white/90 italic mb-6">"A montagem do stand superou todas as expectativas. Pontualidade impecável e um acabamento de primeiríssima linha que chamou atenção na feira inteira."</p>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#76993D]/15 flex items-center font-bold text-[#76993D] justify-center">MC</div>
+                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center font-bold text-[#39FF14] justify-center">MC</div>
                       <div>
-                        <h4 className="font-semibold text-slate-900">Marcos C.</h4>
-                        <span className="text-xs text-slate-500">Diretor de Marketing, TechCorp</span>
+                        <h4 className="font-semibold text-white">Marcos C.</h4>
+                        <span className="text-xs text-white/60">Diretor de Marketing, TechCorp</span>
                       </div>
                     </div>
                   </div>
-                  <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative">
-                    <div className="flex text-[#76993D] mb-4 gap-1">
+                  <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative">
+                    <div className="flex text-[#39FF14] mb-4 gap-1">
                       {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                     </div>
-                    <p className="text-slate-700 italic mb-6">"Trabalhar com a KTMR nos deu total segurança. Desde o projeto 3D até a entrega final no pavilhão, a equipe demonstrou extrema competência."</p>
+                    <p className="text-white/90 italic mb-6">"Trabalhar com a KTMR nos deu total segurança. Desde o projeto 3D até a entrega final no pavilhão, a equipe demonstrou extrema competência."</p>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#76993D]/15 flex items-center font-bold text-[#76993D] justify-center">RA</div>
+                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center font-bold text-[#39FF14] justify-center">RA</div>
                       <div>
-                        <h4 className="font-semibold text-slate-900">Renata A.</h4>
-                        <span className="text-xs text-slate-500">Gerente de Eventos, InovaExpo</span>
+                        <h4 className="font-semibold text-white">Renata A.</h4>
+                        <span className="text-xs text-white/60">Gerente de Eventos, InovaExpo</span>
                       </div>
                     </div>
                   </div>
@@ -205,53 +205,53 @@ export default function App() {
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <span className="inline-block px-3 py-1 rounded-full bg-[#76993D]/10 text-[#76993D] font-bold tracking-wider text-xs uppercase">Quem Somos</span>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Especialistas em soluções para eventos.</h2>
-                <p className="text-slate-600 leading-relaxed font-light text-lg">
+                <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold tracking-wider text-xs uppercase">Quem Somos</span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Especialistas em soluções para eventos.</h2>
+                <p className="text-white/80 leading-relaxed font-light text-lg">
                   A KTMR é uma empresa especializada na montagem de stands e ambientes para feiras, congressos e eventos corporativos, unindo criatividade, estrutura e eficiência.
                 </p>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-white/80 leading-relaxed">
                   Nosso compromisso é transformar a presença da sua marca em uma experiência memorável. Contamos com infraestrutura própria e profissionais altamente capacitados para gerenciar cada etapa do seu projeto com excelência.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 text-center shadow-sm hover:border-[#76993D] transition-all">
-                    <h3 className="text-2xl font-black text-[#76993D] mb-1">Equipe</h3>
-                    <p className="text-xs text-slate-500">Experiente e qualificada</p>
+                  <div className="bg-[#05331b] p-5 rounded-xl border border-white/10 text-center shadow-sm hover:border-[#39FF14] transition-all">
+                    <h3 className="text-2xl font-black text-[#39FF14] mb-1">Equipe</h3>
+                    <p className="text-xs text-white/60">Experiente e qualificada</p>
                   </div>
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 text-center shadow-sm hover:border-[#76993D] transition-all">
-                    <h3 className="text-2xl font-black text-[#76993D] mb-1">Processos</h3>
-                    <p className="text-xs text-slate-500">Bem definidos</p>
+                  <div className="bg-[#05331b] p-5 rounded-xl border border-white/10 text-center shadow-sm hover:border-[#39FF14] transition-all">
+                    <h3 className="text-2xl font-black text-[#39FF14] mb-1">Processos</h3>
+                    <p className="text-xs text-white/60">Bem definidos</p>
                   </div>
-                  <div className="bg-white p-5 rounded-xl border border-slate-200 text-center shadow-sm hover:border-[#76993D] transition-all">
-                    <h3 className="text-2xl font-black text-[#76993D] mb-1">Soluções</h3>
-                    <p className="text-xs text-slate-500">Sob medida para cada projeto</p>
+                  <div className="bg-[#05331b] p-5 rounded-xl border border-white/10 text-center shadow-sm hover:border-[#39FF14] transition-all">
+                    <h3 className="text-2xl font-black text-[#39FF14] mb-1">Soluções</h3>
+                    <p className="text-xs text-white/60">Sob medida para cada projeto</p>
                   </div>
                 </div>
               </div>
               <div className="relative space-y-4">
-                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Equipe KTMR" className="rounded-2xl shadow-xl border border-slate-200" />
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Equipe KTMR" className="rounded-2xl shadow-xl border border-white/10" />
               </div>
             </div>
 
             {/* Missão, Visão e Valores */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10 border-t border-slate-200">
-              <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-2 h-full bg-[#76993D]"></div>
-                <Target className="w-8 h-8 text-[#76993D] mb-4" />
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Nossa Missão</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Entregar estruturas de alto padrão que valorizem a identidade de cada cliente, garantindo segurança, pontualidade e destaque em feiras e congressos.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10 border-t border-white/10">
+              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-2 h-full bg-[#39FF14]"></div>
+                <Target className="w-8 h-8 text-[#39FF14] mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">Nossa Missão</h3>
+                <p className="text-white/70 text-sm leading-relaxed">Entregar estruturas de alto padrão que valorizem a identidade de cada cliente, garantindo segurança, pontualidade e destaque em feiras e congressos.</p>
               </div>
-              <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-2 h-full bg-[#76993D]"></div>
-                <Compass className="w-8 h-8 text-[#76993D] mb-4" />
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Nossa Visão</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Ser referência nacional em montagem de cenografia e stands corporativos, reconhecida pela inovação nos projetos e excelência operacional.</p>
+              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-2 h-full bg-[#39FF14]"></div>
+                <Compass className="w-8 h-8 text-[#39FF14] mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">Nossa Visão</h3>
+                <p className="text-white/70 text-sm leading-relaxed">Ser referência nacional em montagem de cenografia e stands corporativos, reconhecida pela inovação nos projetos e excelência operacional.</p>
               </div>
-              <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-2 h-full bg-[#76993D]"></div>
-                <Users className="w-8 h-8 text-[#76993D] mb-4" />
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Nossos Valores</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Comprometimento absoluto com prazos, transparência com parceiros, acabamento impecável e foco total no sucesso do cliente.</p>
+              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-2 h-full bg-[#39FF14]"></div>
+                <Users className="w-8 h-8 text-[#39FF14] mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">Nossos Valores</h3>
+                <p className="text-white/70 text-sm leading-relaxed">Comprometimento absoluto com prazos, transparência com parceiros, acabamento impecável e foco total no sucesso do cliente.</p>
               </div>
             </div>
           </div>
@@ -261,29 +261,29 @@ export default function App() {
         {activeTab === 'categorias' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-4">
-              <span className="inline-block px-3 py-1 rounded-full bg-[#76993D]/10 text-[#76993D] font-bold text-xs uppercase">Nossas Categorias</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Diversos formatos para o seu objetivo.</h2>
-              <p className="text-slate-600">Do conceito à montagem, oferecemos soluções completas para cada necessidade do seu evento.</p>
+              <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold text-xs uppercase">Nossas Categorias</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Diversos formatos para o seu objetivo.</h2>
+              <p className="text-white/70">Do conceito à montagem, oferecemos soluções completas para cada necessidade do seu evento.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {categoriesList.map((cat, idx) => (
-                <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-[#76993D] transition-all shadow-sm flex flex-col sm:flex-row">
+                <div key={idx} className="bg-[#05331b] rounded-2xl overflow-hidden border border-white/10 hover:border-[#39FF14] transition-all shadow-sm flex flex-col sm:flex-row">
                   <div className="sm:w-1/2 h-64 sm:h-auto relative">
                     <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="sm:w-1/2 p-8 flex flex-col justify-between space-y-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-2">{cat.title}</h3>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-4">{cat.desc}</p>
+                      <h3 className="text-2xl font-bold text-white mb-2">{cat.title}</h3>
+                      <p className="text-white/70 text-sm leading-relaxed mb-4">{cat.desc}</p>
                       <ul className="space-y-2">
                         {cat.points.map((pt, i) => (
-                          <li key={i} className="flex items-center gap-2 text-xs text-slate-700">
-                            <Check className="w-3.5 h-3.5 text-[#76993D]" /> {pt}
+                          <li key={i} className="flex items-center gap-2 text-xs text-white/80">
+                            <Check className="w-3.5 h-3.5 text-[#39FF14]" /> {pt}
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <button onClick={() => setActiveTab('contato')} className="inline-flex items-center gap-2 text-[#76993D] font-bold text-sm hover:underline">
+                    <button onClick={() => setActiveTab('contato')} className="inline-flex items-center gap-2 text-[#39FF14] font-bold text-sm hover:underline">
                       Solicitar Orçamento <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
@@ -297,9 +297,9 @@ export default function App() {
         {activeTab === 'galeria' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-4">
-              <span className="inline-block px-3 py-1 rounded-full bg-[#76993D]/10 text-[#76993D] font-bold text-xs uppercase">Cases de Sucesso</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Resultados que falam por si.</h2>
-              <p className="text-slate-600">Projetos que unem design, funcionalidade e acabamento para fortalecer marcas e gerar experiências memoráveis.</p>
+              <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold text-xs uppercase">Cases de Sucesso</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Resultados que falam por si.</h2>
+              <p className="text-white/70">Projetos que unem design, funcionalidade e acabamento para fortalecer marcas e gerar experiências memoráveis.</p>
             </div>
 
             {/* Filtros */}
@@ -308,7 +308,7 @@ export default function App() {
                 <button
                   key={cat}
                   onClick={() => setFilterCategory(cat)}
-                  className={`px-5 py-2 rounded-lg text-sm font-medium capitalize transition-all ${filterCategory === cat ? 'bg-[#76993D] text-white font-bold shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'}`}
+                  className={`px-5 py-2 rounded-lg text-sm font-medium capitalize transition-all ${filterCategory === cat ? 'bg-[#39FF14] text-slate-950 font-bold shadow-sm' : 'bg-[#05331b] text-white/80 hover:bg-white/10 border border-white/10'}`}
                 >
                   {cat}
                 </button>
@@ -318,17 +318,17 @@ export default function App() {
             {/* Grid de Projetos */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.filter(p => filterCategory === 'todos' || p.category === filterCategory).map((proj) => (
-                <div key={proj.id} onClick={() => setSelectedProject(proj)} className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-[#76993D] transition-all cursor-pointer group shadow-sm">
+                <div key={proj.id} onClick={() => setSelectedProject(proj)} className="bg-[#05331b] rounded-2xl overflow-hidden border border-white/10 hover:border-[#39FF14] transition-all cursor-pointer group shadow-sm">
                   <div className="h-60 overflow-hidden relative">
                     <img src={proj.image} alt={proj.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-md text-xs font-semibold text-white">
+                    <span className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-md text-xs font-semibold text-white">
                       {proj.size}
                     </span>
                   </div>
                   <div className="p-6 space-y-2">
-                    <span className="text-xs text-[#76993D] font-bold uppercase">{proj.category}</span>
-                    <h3 className="text-xl font-bold text-slate-900">{proj.title}</h3>
-                    <p className="text-slate-600 text-sm line-clamp-2">{proj.description}</p>
+                    <span className="text-xs text-[#39FF14] font-bold uppercase">{proj.category}</span>
+                    <h3 className="text-xl font-bold text-white">{proj.title}</h3>
+                    <p className="text-white/70 text-sm line-clamp-2">{proj.description}</p>
                   </div>
                 </div>
               ))}
@@ -340,48 +340,48 @@ export default function App() {
         {activeTab === 'sustentabilidade' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="inline-block px-3 py-1 rounded-full bg-[#76993D]/10 text-[#76993D] font-bold text-xs uppercase">Sustentabilidade</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Responsabilidade e Inovação Ecológica</h2>
-              <p className="text-slate-600 leading-relaxed text-lg">
+              <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold text-xs uppercase">Sustentabilidade</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Responsabilidade e Inovação Ecológica</h2>
+              <p className="text-white/80 leading-relaxed text-lg">
                 Na KTMR, buscamos integrar práticas sustentáveis em nossos processos de montagem, otimizando o uso de materiais e reduzindo o impacto ambiental em cada evento corporativo.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-[#76993D] transition-all">
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#76993D]"></div>
-                <div className="w-12 h-12 bg-[#76993D]/15 rounded-xl flex items-center justify-center text-[#76993D] mb-6">
+              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden group hover:border-[#39FF14] transition-all">
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#39FF14]"></div>
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
                   <Leaf className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Materiais Reutilizáveis</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Estruturas modulares pensadas para múltiplos ciclos de utilização, diminuindo drasticamente o descarte de resíduos no pós-evento.</p>
+                <h3 className="text-xl font-bold text-white mb-2">Materiais Reutilizáveis</h3>
+                <p className="text-white/70 text-sm leading-relaxed">Estruturas modulares pensadas para múltiplos ciclos de utilização, diminuindo drasticamente o descarte de resíduos no pós-evento.</p>
               </div>
-              <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-[#76993D] transition-all">
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#76993D]"></div>
-                <div className="w-12 h-12 bg-[#76993D]/15 rounded-xl flex items-center justify-center text-[#76993D] mb-6">
+              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden group hover:border-[#39FF14] transition-all">
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#39FF14]"></div>
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
                   <Building2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Eficiência Energética</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Uso intensivo de iluminação em LED e sistemas otimizados de distribuição elétrica para garantir menor consumo de energia nos pavilhões.</p>
+                <h3 className="text-xl font-bold text-white mb-2">Eficiência Energética</h3>
+                <p className="text-white/70 text-sm leading-relaxed">Uso intensivo de iluminação em LED e sistemas otimizados de distribuição elétrica para garantir menor consumo de energia nos pavilhões.</p>
               </div>
-              <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-[#76993D] transition-all">
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#76993D]"></div>
-                <div className="w-12 h-12 bg-[#76993D]/15 rounded-xl flex items-center justify-center text-[#76993D] mb-6">
+              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden group hover:border-[#39FF14] transition-all">
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#39FF14]"></div>
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Gestão de Resíduos</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Destinação correta e reciclagem de sobras de marcenaria, tintas e materiais recicláveis em parceria com empresas e órgãos especializados.</p>
+                <h3 className="text-xl font-bold text-white mb-2">Gestão de Resíduos</h3>
+                <p className="text-white/70 text-sm leading-relaxed">Destinação correta e reciclagem de sobras de marcenaria, tintas e materiais recicláveis em parceria com empresas e órgãos especializados.</p>
               </div>
             </div>
 
-            {/* Bloco de destaque verde na sustentabilidade */}
-            <div className="bg-[#76993D]/10 border border-[#76993D]/30 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+            {/* Bloco de destaque verde neon na sustentabilidade */}
+            <div className="bg-[#05331b] border border-[#39FF14]/30 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg">
               <div className="space-y-3 max-w-2xl">
-                <span className="text-[#76993D] font-bold text-xs uppercase tracking-wider">Compromisso Verde</span>
-                <h3 className="text-2xl font-bold text-slate-900">Eventos sustentáveis geram mais valor para sua marca.</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Associar sua empresa a práticas eco-friendly durante feiras e feirões transmite modernidade, responsabilidade social e consciência ambiental ao seu público.</p>
+                <span className="text-[#39FF14] font-bold text-xs uppercase tracking-wider">Compromisso Verde</span>
+                <h3 className="text-2xl font-bold text-white">Eventos sustentáveis geram mais valor para sua marca.</h3>
+                <p className="text-white/70 text-sm leading-relaxed">Associar sua empresa a práticas eco-friendly durante feiras e feirões transmite modernidade, responsabilidade social e consciência ambiental ao seu público.</p>
               </div>
-              <button onClick={() => setActiveTab('contato')} className="whitespace-nowrap bg-[#76993D] hover:bg-[#628A4C] text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-md">
+              <button onClick={() => setActiveTab('contato')} className="whitespace-nowrap bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-md">
                 Montar Stand Sustentável
               </button>
             </div>
@@ -391,30 +391,30 @@ export default function App() {
         {/* 6. CONTATO & SIMULADOR */}
         {activeTab === 'contato' && (
           <div className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-lg">
+            <div className="bg-[#05331b] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-lg">
               <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-                <span className="inline-block px-3 py-1 rounded-full bg-[#76993D]/10 text-[#76993D] font-bold text-xs uppercase">Atendimento Personalizado</span>
-                <h2 className="text-3xl font-extrabold text-slate-900">Faça seu Projeto com a KTMR</h2>
-                <p className="text-slate-600">Vamos transformar o seu evento em uma grande conexão? Preencha os dados abaixo e fale conosco.</p>
+                <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold text-xs uppercase">Atendimento Personalizado</span>
+                <h2 className="text-3xl font-extrabold text-white">Faça seu Projeto com a KTMR</h2>
+                <p className="text-white/70">Vamos transformar o seu evento em uma grande conexão? Preencha os dados abaixo e fale conosco.</p>
               </div>
 
               <form onSubmit={sendWhatsAppBudget} className="space-y-8">
                 {budgetStep === 1 && (
                   <div className="space-y-6">
-                    <h3 className="text-lg font-semibold text-[#76993D]">1. Qual o tipo de solução você procura?</h3>
+                    <h3 className="text-lg font-semibold text-[#39FF14]">1. Qual o tipo de solução você procura?</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {['Stands Montados', 'Stands Básicos', 'Projetos Especiais', 'Espaços Instagramáveis'].map((tipo) => (
                         <button
                           type="button"
                           key={tipo}
                           onClick={() => setBudgetData({ ...budgetData, tipo })}
-                          className={`p-4 rounded-xl border text-left font-medium transition-all ${budgetData.tipo === tipo ? 'bg-[#76993D] text-white border-[#76993D] font-bold shadow-sm' : 'bg-slate-50 border-slate-200 text-slate-800 hover:border-slate-300'}`}
+                          className={`p-4 rounded-xl border text-left font-medium transition-all ${budgetData.tipo === tipo ? 'bg-[#39FF14] text-slate-950 border-[#39FF14] font-bold shadow-sm' : 'bg-[#06402B] border-white/10 text-white hover:border-[#39FF14]/50'}`}
                         >
                           {tipo}
                         </button>
                       ))}
                     </div>
-                    <button type="button" onClick={() => setBudgetStep(2)} className="w-full bg-[#76993D] hover:bg-[#628A4C] text-white font-bold py-3 rounded-xl transition-all shadow-md">
+                    <button type="button" onClick={() => setBudgetStep(2)} className="w-full bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold py-3 rounded-xl transition-all shadow-md">
                       Avançar
                     </button>
                   </div>
@@ -422,56 +422,56 @@ export default function App() {
 
                 {budgetStep === 2 && (
                   <div className="space-y-6">
-                    <h3 className="text-lg font-semibold text-[#76993D]">2. Qual o tamanho aproximado do espaço?</h3>
+                    <h3 className="text-lg font-semibold text-[#39FF14]">2. Qual o tamanho aproximado do espaço?</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       {['Até 36m²', 'De 36m² a 100m²', 'Acima de 100m²'].map((tamanho) => (
                         <button
                           type="button"
                           key={tamanho}
                           onClick={() => setBudgetData({ ...budgetData, tamanho })}
-                          className={`p-4 rounded-xl border text-center font-medium transition-all ${budgetData.tamanho === tamanho ? 'bg-[#76993D] text-white border-[#76993D] font-bold shadow-sm' : 'bg-slate-50 border-slate-200 text-slate-800 hover:border-slate-300'}`}
+                          className={`p-4 rounded-xl border text-center font-medium transition-all ${budgetData.tamanho === tamanho ? 'bg-[#39FF14] text-slate-950 border-[#39FF14] font-bold shadow-sm' : 'bg-[#06402B] border-white/10 text-white hover:border-[#39FF14]/50'}`}
                         >
                           {tamanho}
                         </button>
                       ))}
                     </div>
                     <div className="flex gap-4">
-                      <button type="button" onClick={() => setBudgetStep(1)} className="w-1/2 bg-slate-200 text-slate-800 font-semibold py-3 rounded-xl hover:bg-slate-300">Voltar</button>
-                      <button type="button" onClick={() => setBudgetStep(3)} className="w-1/2 bg-[#76993D] hover:bg-[#628A4C] text-white font-bold py-3 rounded-xl shadow-md">Avançar</button>
+                      <button type="button" onClick={() => setBudgetStep(1)} className="w-1/2 bg-white/10 text-white font-semibold py-3 rounded-xl hover:bg-white/20">Voltar</button>
+                      <button type="button" onClick={() => setBudgetStep(3)} className="w-1/2 bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold py-3 rounded-xl shadow-md">Avançar</button>
                     </div>
                   </div>
                 )}
 
                 {budgetStep === 3 && (
                   <div className="space-y-6">
-                    <h3 className="text-lg font-semibold text-[#76993D]">3. Seus dados para contato</h3>
+                    <h3 className="text-lg font-semibold text-[#39FF14]">3. Seus dados para contato</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm text-slate-600 mb-2">Seu Nome</label>
+                        <label className="block text-sm text-white/80 mb-2">Seu Nome</label>
                         <input
                           type="text"
                           required
                           value={budgetData.nome}
                           onChange={(e) => setBudgetData({ ...budgetData, nome: e.target.value })}
                           placeholder="Digite seu nome"
-                          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#76993D]"
+                          className="w-full bg-[#06402B] border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#39FF14]"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm text-slate-600 mb-2">Nome da Empresa</label>
+                        <label className="block text-sm text-white/80 mb-2">Nome da Empresa</label>
                         <input
                           type="text"
                           required
                           value={budgetData.empresa}
                           onChange={(e) => setBudgetData({ ...budgetData, empresa: e.target.value })}
                           placeholder="Digite sua empresa"
-                          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-[#76993D]"
+                          className="w-full bg-[#06402B] border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#39FF14]"
                         />
                       </div>
                     </div>
                     <div className="flex gap-4 pt-4">
-                      <button type="button" onClick={() => setBudgetStep(2)} className="w-1/2 bg-slate-200 text-slate-800 font-semibold py-3 rounded-xl hover:bg-slate-300">Voltar</button>
-                      <button type="submit" className="w-1/2 bg-[#76993D] hover:bg-[#628A4C] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg">
+                      <button type="button" onClick={() => setBudgetStep(2)} className="w-1/2 bg-white/10 text-white font-semibold py-3 rounded-xl hover:bg-white/20">Voltar</button>
+                      <button type="submit" className="w-1/2 bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg">
                         <Send className="w-5 h-5" /> Enviar para o WhatsApp
                       </button>
                     </div>
@@ -479,12 +479,12 @@ export default function App() {
                 )}
               </form>
 
-              <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-slate-600 text-sm gap-4">
+              <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-white/70 text-sm gap-4">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#76993D]" /> Atendimento: (45) 9922-4000
+                  <Phone className="w-4 h-4 text-[#39FF14]" /> Atendimento: (45) 9922-4000
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#76993D]" /> Orçamento sem compromisso
+                  <CheckCircle className="w-4 h-4 text-[#39FF14]" /> Orçamento sem compromisso
                 </div>
               </div>
             </div>
@@ -494,12 +494,12 @@ export default function App() {
       </main>
 
       {/* FOOTER FIXADO E UNIFORME */}
-      <footer className="bg-white border-t border-slate-200 py-10 w-full mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-slate-500 text-sm">
+      <footer className="bg-[#05331b] border-t border-white/10 py-10 w-full mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-white/60 text-sm">
           <div className="flex items-center gap-2">
             <div className="flex items-center">
-              <span className="text-xl font-black tracking-tighter text-[#76993D]">K</span>
-              <span className="text-xl font-black tracking-tight text-slate-900">TMR</span>
+              <span className="text-xl font-black tracking-tighter text-[#39FF14]">K</span>
+              <span className="text-xl font-black tracking-tight text-white">TMR</span>
             </div>
             <span className="ml-2">© 2026 Todos os direitos reservados.</span>
           </div>
@@ -509,9 +509,9 @@ export default function App() {
 
       {/* MODAL DE PROJETOS */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white border border-slate-200 rounded-3xl max-w-2xl w-full overflow-hidden relative shadow-2xl">
-            <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 bg-slate-900/60 hover:bg-slate-900 text-white p-2 rounded-full z-10 transition-all">
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[#05331b] border border-white/10 rounded-3xl max-w-2xl w-full overflow-hidden relative shadow-2xl">
+            <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full z-10 transition-all">
               <X className="w-5 h-5" />
             </button>
             <div className="h-72 overflow-hidden relative">
@@ -519,13 +519,13 @@ export default function App() {
             </div>
             <div className="p-8 space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-[#76993D] font-bold">{selectedProject.category}</span>
-                <span className="bg-slate-100 px-3 py-1 rounded-md text-xs font-bold text-slate-800 border border-slate-200">{selectedProject.size}</span>
+                <span className="text-xs uppercase tracking-wider text-[#39FF14] font-bold">{selectedProject.category}</span>
+                <span className="bg-white/10 px-3 py-1 rounded-md text-xs font-bold text-white border border-white/10">{selectedProject.size}</span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">{selectedProject.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{selectedProject.description}</p>
+              <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
+              <p className="text-white/70 leading-relaxed">{selectedProject.description}</p>
               <div className="pt-4">
-                <button onClick={() => { setSelectedProject(null); setActiveTab('contato'); }} className="w-full bg-[#76993D] hover:bg-[#628A4C] text-white font-bold py-3.5 rounded-xl transition-all shadow-md">
+                <button onClick={() => { setSelectedProject(null); setActiveTab('contato'); }} className="w-full bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold py-3.5 rounded-xl transition-all shadow-md">
                   Solicitar Projeto Semelhante
                 </button>
               </div>
