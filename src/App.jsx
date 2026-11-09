@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { 
   Building2, Layers, Image as ImageIcon, Leaf, Phone, Menu, X, 
-  CheckCircle, ArrowRight, Star, ChevronRight, Mail, 
-  Send, Sparkles, ShieldCheck, Clock, Award, Check, Target, Compass, Users
+  CheckCircle, ArrowRight, Star, ChevronRight, Send, Sparkles, 
+  ShieldCheck, Clock, Award, Check, Target, Compass, Users, ArrowDown,
+  Recycle, Zap, Truck, TreePine
 } from 'lucide-react';
 
 export default function App() {
@@ -22,20 +23,26 @@ export default function App() {
     whatsapp: ''
   });
 
+  // Imagens baseadas nos modelos oficiais
+  const categoryImages = {
+    basicos: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80',
+    montados: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+    especiais: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80',
+    instagramaveis: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80'
+  };
+
   const projects = [
-    { id: 1, title: 'Stand Corporativo TechExpo', category: 'Montados', size: '72m²', image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80', description: 'Design personalizado com acabamento em madeira nobre e iluminação em LED embutida.' },
-    { id: 2, title: 'Ambiente Sustentável EcoMarket', category: 'Especiais', size: '120m²', image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80', description: 'Estrutura modular reutilizável com vegetação natural e painéis de baixo impacto ambiental.' },
-    { id: 3, title: 'Espaço Instagramável Glow Experience', category: 'Instagramáveis', size: '25m²', image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80', description: 'Cenografia imersiva com neon, túnel de luzes e pontos focais para engajamento em redes sociais.' },
-    { id: 4, title: 'Stand Modular Simples & Prático', category: 'Básicos', size: '18m²', image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80', description: 'Solução funcional com excelente aproveitamento de espaço e alta visibilidade de marca.' },
-    { id: 5, title: 'Arena de Palestras & Plenária', category: 'Especiais', size: '200m²', image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80', description: 'Montagem completa de palco, isolamento acústico, painéis de LED gigantes e mobiliário executivo.' },
-    { id: 6, title: 'Lounge VIP Automotivo', category: 'Montados', size: '90m²', image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80', description: 'Ambiente sofisticado com piso elevado, vidro temperado e acabamento premium.' }
+    { id: 1, title: 'Stand Corporativo TechExpo', category: 'Montados', size: '72m²', image: categoryImages.montados, description: 'Design personalizado com acabamento em madeira nobre e iluminação em LED embutida.' },
+    { id: 2, title: 'Ambiente Sustentável EcoMarket', category: 'Especiais', size: '120m²', image: categoryImages.especiais, description: 'Estrutura modular reutilizável com vegetação natural e painéis de baixo impacto ambiental.' },
+    { id: 3, title: 'Espaço Instagramável Glow Experience', category: 'Instagramáveis', size: '25m²', image: categoryImages.instagramaveis, description: 'Cenografia imersiva com neon, túnel de luzes e pontos focais para engajamento em redes sociais.' },
+    { id: 4, title: 'Stand Modular Simples & Prático', category: 'Básicos', size: '18m²', image: categoryImages.basicos, description: 'Solução funcional com excelente aproveitamento de espaço e alta visibilidade de marca.' }
   ];
 
   const categoriesList = [
-    { title: 'Stands Básicos', desc: 'Simplicidade, praticidade e excelente aproveitamento de espaço.', icon: Layers, image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80', points: ['Praticidade e funcionalidade', 'Excelente aproveitamento', 'Soluções versáteis'] },
-    { title: 'Stands Montados', desc: 'Design personalizado e acabamentos de alto padrão para valorizar sua marca.', icon: Building2, image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80', points: ['Design personalizado', 'Acabamentos de alto padrão', 'Valorização da marca'] },
-    { title: 'Projetos Especiais', desc: 'Ideias exclusivas que se tornam realidade para marcas que buscam inovação.', icon: Sparkles, image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80', points: ['Soluções únicas', 'Ideias sob medida', 'Inovação total'] },
-    { title: 'Espaços Instagramáveis', desc: 'Ambientes criativos e interativos projetados para gerar engajamento e alcance.', icon: ImageIcon, image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80', points: ['Experiências interativas', 'Geração de engajamento', 'Cenografia criativa'] }
+    { id: 'Básicos', title: 'Stands Básicos', desc: 'Simplicidade Eficaz', image: categoryImages.basicos },
+    { id: 'Montados', title: 'Stands Montados', desc: 'Impacto Visual', image: categoryImages.montados },
+    { id: 'Especiais', title: 'Projetos Especiais', desc: 'Criatividade Ilimitada', image: categoryImages.especiais },
+    { id: 'Instagramáveis', title: 'Espaços Instagramáveis', desc: 'Engajamento Digital', image: categoryImages.instagramaveis }
   ];
 
   const sendWhatsAppBudget = (e) => {
@@ -46,18 +53,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#06402B] text-white font-sans selection:bg-[#39FF14] selection:text-slate-900">
+    <div className="min-h-screen flex flex-col bg-[#0B0F0D] text-white font-sans selection:bg-[#39FF14] selection:text-black overflow-x-hidden">
       
       {/* HEADER / NAVEGAÇÃO */}
-      <header className="sticky top-0 z-50 bg-[#06402B]/95 backdrop-blur-md border-b border-white/10 shadow-sm">
+      <header className="sticky top-0 z-50 bg-[#0B0F0D]/90 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          {/* LOGO UNIFICADA KTMR */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('home')}>
-            <div className="flex items-center">
-              <span className="text-2xl font-black tracking-tighter text-[#39FF14]">K</span>
-              <span className="text-2xl font-black tracking-tight text-white">TMR</span>
-            </div>
+          {/* LOGO KTMR */}
+          <div className="flex items-center gap-1 cursor-pointer" onClick={() => setActiveTab('home')}>
+            <span className="text-3xl font-black tracking-tighter text-[#39FF14]">K</span>
+            <span className="text-3xl font-black tracking-tight text-white">TMR</span>
           </div>
 
           {/* Desktop Nav */}
@@ -76,7 +81,7 @@ export default function App() {
           <div className="hidden md:block">
             <button 
               onClick={() => setActiveTab('contato')}
-              className="bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold px-5 py-2.5 rounded-lg transition-all shadow-md flex items-center gap-2"
+              className="bg-[#39FF14] hover:bg-[#32e011] text-black font-extrabold px-6 py-2.5 rounded-full transition-all shadow-[0_0_15px_rgba(57,255,20,0.4)] flex items-center gap-2 text-sm"
             >
               <Phone className="w-4 h-4" /> Solicitar Orçamento
             </button>
@@ -90,7 +95,7 @@ export default function App() {
 
         {/* Mobile Nav Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#05331b] border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+          <div className="md:hidden bg-[#0B0F0D] border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
             {['home', 'quemsomos', 'categorias', 'galeria', 'sustentabilidade', 'contato'].map((tab) => (
               <button
                 key={tab}
@@ -110,93 +115,102 @@ export default function App() {
         {/* 1. HOME */}
         {activeTab === 'home' && (
           <div>
-            {/* Hero Section */}
-            <section className="relative min-h-[75vh] flex items-center justify-center px-4 py-20">
-              <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#39FF14]/30 text-xs font-semibold text-[#39FF14] shadow-sm">
-                  <Sparkles className="w-3.5 h-3.5" /> Transformando eventos em grandes experiências
+            {/* HERO SECTION COM GLOW NEON E ESTILO PRETO ELEGANTE */}
+            <section 
+              className="relative min-h-[85vh] flex flex-col justify-center items-center px-4 py-20 bg-cover bg-center overflow-hidden border-b border-white/10"
+              style={{ 
+                backgroundImage: `linear-gradient(to right, rgba(11, 15, 13, 0.95), rgba(6, 64, 43, 0.75)), url('${categoryImages.montados}')` 
+              }}
+            >
+              {/* Efeitos Glow Neon no Fundo */}
+              <div className="absolute top-10 left-10 w-96 h-96 bg-[#39FF14]/15 rounded-full blur-[140px] pointer-events-none"></div>
+              <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#06402B] rounded-full blur-[100px] pointer-events-none"></div>
+
+              <div className="max-w-4xl mx-auto text-left sm:text-center space-y-6 relative z-10">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-[#39FF14]/30 text-xs font-semibold text-[#39FF14] shadow-sm">
+                  <Sparkles className="w-3.5 h-3.5" /> Cenografia e Estrutura de Alto Padrão
                 </div>
                 <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
-                  Do planejamento à montagem, criamos espaços que <span className="text-[#39FF14]">conectam marcas e pessoas.</span>
+                  <span className="text-[#39FF14]">KTMR:</span> Transformando Eventos em Grandes Experiências.<br />
+                  <span className="text-white/90">Do Planejamento à Montagem, Criamos Conexões e Impacto.</span>
                 </h1>
-                <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto font-light">
-                  Soluções completas em montagem de stands e ambientes para feiras, congressos e eventos corporativos, unindo criatividade, estrutura e eficiência.
+                <p className="text-lg text-white/70 max-w-2xl mx-auto font-light">
+                  Estruturas completas para feiras e congressos, unindo design inovador, pontualidade e acabamentos impecáveis.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                  <button onClick={() => setActiveTab('galeria')} className="w-full sm:w-auto bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
-                    Ver Projetos <ArrowRight className="w-5 h-5" />
+
+                <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <button onClick={() => setActiveTab('contato')} className="w-full sm:w-auto bg-[#39FF14] hover:bg-[#32e011] text-black font-extrabold px-8 py-3.5 rounded-full transition-all shadow-[0_0_20px_rgba(57,255,20,0.4)] flex items-center justify-center gap-2 text-base">
+                    Solicitar Orçamento <ArrowRight className="w-5 h-5" />
                   </button>
-                  <button onClick={() => setActiveTab('contato')} className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-xl border border-white/20 transition-all shadow-sm">
-                    Falar com Atendimento
+                  <button onClick={() => setActiveTab('galeria')} className="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white font-semibold px-8 py-3.5 rounded-full border border-white/20 transition-all">
+                    Ver Galeria de Projetos
                   </button>
+                </div>
+              </div>
+
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+                <ArrowDown className="w-6 h-6 text-[#39FF14]" />
+              </div>
+            </section>
+
+            {/* SEÇÃO AS NOSSAS CATEGORIAS NA HOME */}
+            <section className="py-20 bg-[#0B0F0D] relative">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+                <div className="flex justify-between items-end">
+                  <div>
+                    <span className="text-[#39FF14] font-bold text-xs uppercase tracking-widest">Modelos Disponíveis</span>
+                    <h2 className="text-3xl font-extrabold text-white">As Nossas Categorias</h2>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {categoriesList.map((cat, idx) => (
+                    <div 
+                      key={idx}
+                      onClick={() => setActiveTab('categorias')}
+                      className="group bg-[#121A15] rounded-2xl overflow-hidden border border-white/10 hover:border-[#39FF14] transition-all cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(57,255,20,0.25)] relative"
+                    >
+                      <div className="h-48 overflow-hidden relative">
+                        <img src={cat.image} alt={cat.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#121A15] via-transparent to-transparent"></div>
+                      </div>
+                      <div className="p-5 space-y-2">
+                        <h3 className="text-lg font-bold text-white group-hover:text-[#39FF14] transition-colors">{cat.title}</h3>
+                        <p className="text-xs text-white/60">{cat.desc}</p>
+                        <div className="pt-2 flex items-center text-[#39FF14] text-xs font-bold gap-1 group-hover:translate-x-1 transition-transform">
+                          Ver detalhes <ArrowRight className="w-3.5 h-3.5" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </section>
 
-            {/* Diferenciais */}
-            <section className="py-20 bg-[#05331b] border-y border-white/10">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-[#06402B] p-8 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all shadow-sm">
-                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
-                    <Clock className="w-6 h-6" />
+            {/* SEÇÃO CASES DE SUCESSO NA HOME */}
+            <section className="py-20 bg-[#07140E] border-t border-white/10 relative">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <span className="text-[#39FF14] font-bold text-xs uppercase tracking-widest">Portfólio em Destaque</span>
+                <h2 className="text-3xl font-extrabold text-white">Cases de Sucesso</h2>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div className="bg-[#121A15] rounded-3xl p-4 border border-white/10 shadow-2xl relative overflow-hidden group">
+                    <img src={categoryImages.especiais} alt="Ambiente Sustentável" className="rounded-2xl w-full h-80 object-cover border border-white/10 group-hover:scale-105 transition-transform duration-500" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">Comprometimento com Prazos</h3>
-                  <p className="text-white/70 text-sm leading-relaxed">Rigor absoluto no cronograma para que seu evento aconteça exatamente como planejado.</p>
-                </div>
-                <div className="bg-[#06402B] p-8 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all shadow-sm">
-                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
-                    <ShieldCheck className="w-6 h-6" />
+                  <div className="space-y-6">
+                    <h3 className="text-3xl font-extrabold text-white">AMBIENTE SUSTENTÁVEL</h3>
+                    <p className="text-white/80 text-base leading-relaxed">Design funcional com acabamento premium e sustentabilidade aplicada. Projeto desenvolvido para feiras corporativas de grande escala com foco em reaproveitamento total.</p>
+                    <button 
+                      onClick={() => setActiveTab('galeria')}
+                      className="bg-[#39FF14] hover:bg-[#32e011] text-black font-extrabold px-8 py-3 rounded-full transition-all shadow-[0_0_15px_rgba(57,255,20,0.3)] inline-flex items-center gap-2 text-sm"
+                    >
+                      VER PROJETO <ArrowRight className="w-4 h-4" />
+                    </button>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">Agilidade em Cada Etapa</h3>
-                  <p className="text-white/70 text-sm leading-relaxed">Processos bem definidos e suporte dinâmico em todas as fases do projeto.</p>
-                </div>
-                <div className="bg-[#06402B] p-8 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all shadow-sm">
-                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
-                    <Award className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-3">Acabamento que Impressiona</h3>
-                  <p className="text-white/70 text-sm leading-relaxed">Padrão estético elevado para destacar a sua marca e atrair o público ideal.</p>
                 </div>
               </div>
             </section>
 
-            {/* Depoimentos de Clientes */}
-            <section className="py-20 bg-[#06402B]">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center max-w-2xl mx-auto mb-16">
-                  <h2 className="text-3xl font-bold text-white mb-4">Depoimentos de Clientes</h2>
-                  <p className="text-white/70">O reconhecimento de quem confia na nossa entrega e profissionalismo.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative">
-                    <div className="flex text-[#39FF14] mb-4 gap-1">
-                      {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
-                    </div>
-                    <p className="text-white/90 italic mb-6">"A montagem do stand superou todas as expectativas. Pontualidade impecável e um acabamento de primeiríssima linha que chamou atenção na feira inteira."</p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center font-bold text-[#39FF14] justify-center">MC</div>
-                      <div>
-                        <h4 className="font-semibold text-white">Marcos C.</h4>
-                        <span className="text-xs text-white/60">Diretor de Marketing, TechCorp</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative">
-                    <div className="flex text-[#39FF14] mb-4 gap-1">
-                      {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
-                    </div>
-                    <p className="text-white/90 italic mb-6">"Trabalhar com a KTMR nos deu total segurança. Desde o projeto 3D até a entrega final no pavilhão, a equipe demonstrou extrema competência."</p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center font-bold text-[#39FF14] justify-center">RA</div>
-                      <div>
-                        <h4 className="font-semibold text-white">Renata A.</h4>
-                        <span className="text-xs text-white/60">Gerente de Eventos, InovaExpo</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
           </div>
         )}
 
@@ -205,53 +219,38 @@ export default function App() {
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold tracking-wider text-xs uppercase">Quem Somos</span>
+                <span className="inline-block px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[#39FF14] font-bold tracking-wider text-xs uppercase">Quem Somos</span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Especialistas em soluções para eventos.</h2>
                 <p className="text-white/80 leading-relaxed font-light text-lg">
                   A KTMR é uma empresa especializada na montagem de stands e ambientes para feiras, congressos e eventos corporativos, unindo criatividade, estrutura e eficiência.
                 </p>
-                <p className="text-white/80 leading-relaxed">
-                  Nosso compromisso é transformar a presença da sua marca em uma experiência memorável. Contamos com infraestrutura própria e profissionais altamente capacitados para gerenciar cada etapa do seu projeto com excelência.
+                <p className="text-white/70 leading-relaxed">
+                  Gerenciamos cada etapa da montagem com equipe especializada, garantindo entrega pontual e padrão estético indiscutível.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-                  <div className="bg-[#05331b] p-5 rounded-xl border border-white/10 text-center shadow-sm hover:border-[#39FF14] transition-all">
-                    <h3 className="text-2xl font-black text-[#39FF14] mb-1">Equipe</h3>
-                    <p className="text-xs text-white/60">Experiente e qualificada</p>
-                  </div>
-                  <div className="bg-[#05331b] p-5 rounded-xl border border-white/10 text-center shadow-sm hover:border-[#39FF14] transition-all">
-                    <h3 className="text-2xl font-black text-[#39FF14] mb-1">Processos</h3>
-                    <p className="text-xs text-white/60">Bem definidos</p>
-                  </div>
-                  <div className="bg-[#05331b] p-5 rounded-xl border border-white/10 text-center shadow-sm hover:border-[#39FF14] transition-all">
-                    <h3 className="text-2xl font-black text-[#39FF14] mb-1">Soluções</h3>
-                    <p className="text-xs text-white/60">Sob medida para cada projeto</p>
-                  </div>
-                </div>
               </div>
-              <div className="relative space-y-4">
-                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Equipe KTMR" className="rounded-2xl shadow-xl border border-white/10" />
+              <div>
+                <img src={categoryImages.especiais} alt="Equipe KTMR" className="rounded-2xl shadow-xl border border-white/10" />
               </div>
             </div>
 
-            {/* Missão, Visão e Valores */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10 border-t border-white/10">
-              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
+              <div className="bg-[#121A15] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-2 h-full bg-[#39FF14]"></div>
                 <Target className="w-8 h-8 text-[#39FF14] mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Nossa Missão</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Entregar estruturas de alto padrão que valorizem a identidade de cada cliente, garantindo segurança, pontualidade e destaque em feiras e congressos.</p>
+                <p className="text-white/70 text-sm leading-relaxed">Entregar estruturas de alto padrão que valorizem a identidade de cada cliente, garantindo segurança e pontualidade.</p>
               </div>
-              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
+              <div className="bg-[#121A15] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-2 h-full bg-[#39FF14]"></div>
                 <Compass className="w-8 h-8 text-[#39FF14] mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Nossa Visão</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Ser referência nacional em montagem de cenografia e stands corporativos, reconhecida pela inovação nos projetos e excelência operacional.</p>
+                <p className="text-white/70 text-sm leading-relaxed">Ser referência em montagem de cenografia e stands corporativos, reconhecida pela inovação e excelência.</p>
               </div>
-              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
+              <div className="bg-[#121A15] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-2 h-full bg-[#39FF14]"></div>
                 <Users className="w-8 h-8 text-[#39FF14] mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Nossos Valores</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Comprometimento absoluto com prazos, transparência com parceiros, acabamento impecável e foco total no sucesso do cliente.</p>
+                <p className="text-white/70 text-sm leading-relaxed">Comprometimento absoluto com prazos, transparência e acabamento impecável.</p>
               </div>
             </div>
           </div>
@@ -261,13 +260,12 @@ export default function App() {
         {activeTab === 'categorias' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-4">
-              <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold text-xs uppercase">Nossas Categorias</span>
+              <span className="inline-block px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[#39FF14] font-bold text-xs uppercase">Nossas Categorias</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Diversos formatos para o seu objetivo.</h2>
-              <p className="text-white/70">Do conceito à montagem, oferecemos soluções completas para cada necessidade do seu evento.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {categoriesList.map((cat, idx) => (
-                <div key={idx} className="bg-[#05331b] rounded-2xl overflow-hidden border border-white/10 hover:border-[#39FF14] transition-all shadow-sm flex flex-col sm:flex-row">
+                <div key={idx} className="bg-[#121A15] rounded-2xl overflow-hidden border border-white/10 hover:border-[#39FF14] transition-all shadow-sm flex flex-col sm:flex-row">
                   <div className="sm:w-1/2 h-64 sm:h-auto relative">
                     <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" />
                   </div>
@@ -275,13 +273,6 @@ export default function App() {
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-2">{cat.title}</h3>
                       <p className="text-white/70 text-sm leading-relaxed mb-4">{cat.desc}</p>
-                      <ul className="space-y-2">
-                        {cat.points.map((pt, i) => (
-                          <li key={i} className="flex items-center gap-2 text-xs text-white/80">
-                            <Check className="w-3.5 h-3.5 text-[#39FF14]" /> {pt}
-                          </li>
-                        ))}
-                      </ul>
                     </div>
                     <button onClick={() => setActiveTab('contato')} className="inline-flex items-center gap-2 text-[#39FF14] font-bold text-sm hover:underline">
                       Solicitar Orçamento <ChevronRight className="w-4 h-4" />
@@ -297,33 +288,15 @@ export default function App() {
         {activeTab === 'galeria' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-4">
-              <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold text-xs uppercase">Cases de Sucesso</span>
+              <span className="inline-block px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[#39FF14] font-bold text-xs uppercase">Cases de Sucesso</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Resultados que falam por si.</h2>
-              <p className="text-white/70">Projetos que unem design, funcionalidade e acabamento para fortalecer marcas e gerar experiências memoráveis.</p>
             </div>
 
-            {/* Filtros */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {['todos', 'Montados', 'Especiais', 'Instagramáveis', 'Básicos'].map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setFilterCategory(cat)}
-                  className={`px-5 py-2 rounded-lg text-sm font-medium capitalize transition-all ${filterCategory === cat ? 'bg-[#39FF14] text-slate-950 font-bold shadow-sm' : 'bg-[#05331b] text-white/80 hover:bg-white/10 border border-white/10'}`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
-            {/* Grid de Projetos */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.filter(p => filterCategory === 'todos' || p.category === filterCategory).map((proj) => (
-                <div key={proj.id} onClick={() => setSelectedProject(proj)} className="bg-[#05331b] rounded-2xl overflow-hidden border border-white/10 hover:border-[#39FF14] transition-all cursor-pointer group shadow-sm">
+              {projects.map((proj) => (
+                <div key={proj.id} onClick={() => setSelectedProject(proj)} className="bg-[#121A15] rounded-2xl overflow-hidden border border-white/10 hover:border-[#39FF14] transition-all cursor-pointer group shadow-sm">
                   <div className="h-60 overflow-hidden relative">
                     <img src={proj.image} alt={proj.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-md text-xs font-semibold text-white">
-                      {proj.size}
-                    </span>
                   </div>
                   <div className="p-6 space-y-2">
                     <span className="text-xs text-[#39FF14] font-bold uppercase">{proj.category}</span>
@@ -336,53 +309,66 @@ export default function App() {
           </div>
         )}
 
-        {/* 5. SUSTENTABILIDADE */}
+        {/* 5. SUSTENTABILIDADE ENRIQUECIDA E DETALHADA */}
         {activeTab === 'sustentabilidade' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold text-xs uppercase">Sustentabilidade</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Responsabilidade e Inovação Ecológica</h2>
+              <span className="inline-block px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[#39FF14] font-bold text-xs uppercase">Sustentabilidade & Inovação</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Compromisso com o Futuro: Estruturas Eco-Conscientes</h2>
               <p className="text-white/80 leading-relaxed text-lg">
-                Na KTMR, buscamos integrar práticas sustentáveis em nossos processos de montagem, otimizando o uso de materiais e reduzindo o impacto ambiental em cada evento corporativo.
+                Na KTMR, reduzimos a pegada de carbono em feiras e pavilhões através de processos inteligentes de engenharia modular, economia circular e descarte responsável.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden group hover:border-[#39FF14] transition-all">
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#39FF14]"></div>
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
-                  <Leaf className="w-6 h-6" />
+            {/* 4 Pilares da Sustentabilidade */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-[#121A15] p-6 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all relative overflow-hidden group">
+                <div className="w-12 h-12 bg-[#39FF14]/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-4">
+                  <Recycle className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Materiais Reutilizáveis</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Estruturas modulares pensadas para múltiplos ciclos de utilização, diminuindo drasticamente o descarte de resíduos no pós-evento.</p>
+                <h3 className="text-lg font-bold text-white mb-2">Estruturas Modulares</h3>
+                <p className="text-white/70 text-xs leading-relaxed">Sistemas reaproveitáveis de alumínio e marcenaria inteligente projetados para múltiplos eventos, eliminando o descarte desnecessário.</p>
               </div>
-              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden group hover:border-[#39FF14] transition-all">
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#39FF14]"></div>
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
-                  <Building2 className="w-6 h-6" />
+
+              <div className="bg-[#121A15] p-6 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all relative overflow-hidden group">
+                <div className="w-12 h-12 bg-[#39FF14]/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-4">
+                  <Zap className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Eficiência Energética</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Uso intensivo de iluminação em LED e sistemas otimizados de distribuição elétrica para garantir menor consumo de energia nos pavilhões.</p>
+                <h3 className="text-lg font-bold text-white mb-2">Iluminação EcoLED</h3>
+                <p className="text-white/70 text-xs leading-relaxed">100% dos projetos utilizam iluminação LED de alta eficiência energética, reduzindo a demanda elétrica no pavilhão em até 70%.</p>
               </div>
-              <div className="bg-[#05331b] p-8 rounded-2xl border border-white/10 shadow-sm relative overflow-hidden group hover:border-[#39FF14] transition-all">
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#39FF14]"></div>
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-6">
-                  <ShieldCheck className="w-6 h-6" />
+
+              <div className="bg-[#121A15] p-6 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all relative overflow-hidden group">
+                <div className="w-12 h-12 bg-[#39FF14]/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-4">
+                  <TreePine className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Gestão de Resíduos</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Destinação correta e reciclagem de sobras de marcenaria, tintas e materiais recicláveis em parceria com empresas e órgãos especializados.</p>
+                <h3 className="text-lg font-bold text-white mb-2">Madeira Certificada</h3>
+                <p className="text-white/70 text-xs leading-relaxed">Madeiras e painéis compostos oriundos exclusivamente de áreas de reflorestamento com selo de cadeia de custódia ambiental.</p>
+              </div>
+
+              <div className="bg-[#121A15] p-6 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all relative overflow-hidden group">
+                <div className="w-12 h-12 bg-[#39FF14]/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-4">
+                  <Truck className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Logística Reversa</h3>
+                <p className="text-white/70 text-xs leading-relaxed">Triagem rigorosa após a desmontagem: sobras de marcenaria e materiais recicláveis são destinados a cooperativas parceiras.</p>
               </div>
             </div>
 
-            {/* Bloco de destaque verde neon na sustentabilidade */}
-            <div className="bg-[#05331b] border border-[#39FF14]/30 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg">
-              <div className="space-y-3 max-w-2xl">
-                <span className="text-[#39FF14] font-bold text-xs uppercase tracking-wider">Compromisso Verde</span>
-                <h3 className="text-2xl font-bold text-white">Eventos sustentáveis geram mais valor para sua marca.</h3>
-                <p className="text-white/70 text-sm leading-relaxed">Associar sua empresa a práticas eco-friendly durante feiras e feirões transmite modernidade, responsabilidade social e consciência ambiental ao seu público.</p>
+            {/* Banner de Destaque Verde */}
+            <div className="bg-gradient-to-r from-[#06402B] to-[#121A15] border border-[#39FF14]/40 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+              <div className="space-y-4 max-w-2xl z-10">
+                <span className="text-[#39FF14] font-bold text-xs uppercase tracking-widest">Sua Marca Com Propósito</span>
+                <h3 className="text-2xl font-bold text-white">Quer um stand que transpareça responsabilidade social e ambiental?</h3>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  Criamos cenografias verdes com vegetação natural embutida, tintas atóxicas à base de água e mobiliário sustentável que fortalecem o posicionamento ESG da sua empresa.
+                </p>
               </div>
-              <button onClick={() => setActiveTab('contato')} className="whitespace-nowrap bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-md">
-                Montar Stand Sustentável
+              <button 
+                onClick={() => setActiveTab('contato')} 
+                className="whitespace-nowrap bg-[#39FF14] hover:bg-[#32e011] text-black font-extrabold px-8 py-3.5 rounded-full transition-all shadow-[0_0_20px_rgba(57,255,20,0.4)] z-10 text-sm"
+              >
+                Planejar Stand Sustentável
               </button>
             </div>
           </div>
@@ -391,11 +377,10 @@ export default function App() {
         {/* 6. CONTATO & SIMULADOR */}
         {activeTab === 'contato' && (
           <div className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-[#05331b] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-lg">
+            <div className="bg-[#121A15] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl">
               <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-                <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#39FF14] font-bold text-xs uppercase">Atendimento Personalizado</span>
+                <span className="inline-block px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[#39FF14] font-bold text-xs uppercase">Atendimento Personalizado</span>
                 <h2 className="text-3xl font-extrabold text-white">Faça seu Projeto com a KTMR</h2>
-                <p className="text-white/70">Vamos transformar o seu evento em uma grande conexão? Preencha os dados abaixo e fale conosco.</p>
               </div>
 
               <form onSubmit={sendWhatsAppBudget} className="space-y-8">
@@ -408,13 +393,13 @@ export default function App() {
                           type="button"
                           key={tipo}
                           onClick={() => setBudgetData({ ...budgetData, tipo })}
-                          className={`p-4 rounded-xl border text-left font-medium transition-all ${budgetData.tipo === tipo ? 'bg-[#39FF14] text-slate-950 border-[#39FF14] font-bold shadow-sm' : 'bg-[#06402B] border-white/10 text-white hover:border-[#39FF14]/50'}`}
+                          className={`p-4 rounded-xl border text-left font-medium transition-all ${budgetData.tipo === tipo ? 'bg-[#39FF14] text-black border-[#39FF14] font-bold shadow-sm' : 'bg-[#0B0F0D] border-white/10 text-white hover:border-[#39FF14]/50'}`}
                         >
                           {tipo}
                         </button>
                       ))}
                     </div>
-                    <button type="button" onClick={() => setBudgetStep(2)} className="w-full bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold py-3 rounded-xl transition-all shadow-md">
+                    <button type="button" onClick={() => setBudgetStep(2)} className="w-full bg-[#39FF14] hover:bg-[#32e011] text-black font-extrabold py-3 rounded-full transition-all shadow-md">
                       Avançar
                     </button>
                   </div>
@@ -429,15 +414,15 @@ export default function App() {
                           type="button"
                           key={tamanho}
                           onClick={() => setBudgetData({ ...budgetData, tamanho })}
-                          className={`p-4 rounded-xl border text-center font-medium transition-all ${budgetData.tamanho === tamanho ? 'bg-[#39FF14] text-slate-950 border-[#39FF14] font-bold shadow-sm' : 'bg-[#06402B] border-white/10 text-white hover:border-[#39FF14]/50'}`}
+                          className={`p-4 rounded-xl border text-center font-medium transition-all ${budgetData.tamanho === tamanho ? 'bg-[#39FF14] text-black border-[#39FF14] font-bold shadow-sm' : 'bg-[#0B0F0D] border-white/10 text-white hover:border-[#39FF14]/50'}`}
                         >
                           {tamanho}
                         </button>
                       ))}
                     </div>
                     <div className="flex gap-4">
-                      <button type="button" onClick={() => setBudgetStep(1)} className="w-1/2 bg-white/10 text-white font-semibold py-3 rounded-xl hover:bg-white/20">Voltar</button>
-                      <button type="button" onClick={() => setBudgetStep(3)} className="w-1/2 bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold py-3 rounded-xl shadow-md">Avançar</button>
+                      <button type="button" onClick={() => setBudgetStep(1)} className="w-1/2 bg-white/10 text-white font-semibold py-3 rounded-full hover:bg-white/20">Voltar</button>
+                      <button type="button" onClick={() => setBudgetStep(3)} className="w-1/2 bg-[#39FF14] hover:bg-[#32e011] text-black font-extrabold py-3 rounded-full shadow-md">Avançar</button>
                     </div>
                   </div>
                 )}
@@ -454,7 +439,7 @@ export default function App() {
                           value={budgetData.nome}
                           onChange={(e) => setBudgetData({ ...budgetData, nome: e.target.value })}
                           placeholder="Digite seu nome"
-                          className="w-full bg-[#06402B] border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#39FF14]"
+                          className="w-full bg-[#0B0F0D] border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#39FF14]"
                         />
                       </div>
                       <div>
@@ -465,74 +450,36 @@ export default function App() {
                           value={budgetData.empresa}
                           onChange={(e) => setBudgetData({ ...budgetData, empresa: e.target.value })}
                           placeholder="Digite sua empresa"
-                          className="w-full bg-[#06402B] border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#39FF14]"
+                          className="w-full bg-[#0B0F0D] border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#39FF14]"
                         />
                       </div>
                     </div>
                     <div className="flex gap-4 pt-4">
-                      <button type="button" onClick={() => setBudgetStep(2)} className="w-1/2 bg-white/10 text-white font-semibold py-3 rounded-xl hover:bg-white/20">Voltar</button>
-                      <button type="submit" className="w-1/2 bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg">
+                      <button type="button" onClick={() => setBudgetStep(2)} className="w-1/2 bg-white/10 text-white font-semibold py-3 rounded-full hover:bg-white/20">Voltar</button>
+                      <button type="submit" className="w-1/2 bg-[#39FF14] hover:bg-[#32e011] text-black font-extrabold py-3 rounded-full flex items-center justify-center gap-2 shadow-lg">
                         <Send className="w-5 h-5" /> Enviar para o WhatsApp
                       </button>
                     </div>
                   </div>
                 )}
               </form>
-
-              <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-white/70 text-sm gap-4">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#39FF14]" /> Atendimento: (45) 9922-4000
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#39FF14]" /> Orçamento sem compromisso
-                </div>
-              </div>
             </div>
           </div>
         )}
 
       </main>
 
-      {/* FOOTER FIXADO E UNIFORME */}
-      <footer className="bg-[#05331b] border-t border-white/10 py-10 w-full mt-auto">
+      {/* FOOTER */}
+      <footer className="bg-[#050806] border-t border-white/10 py-10 w-full mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-white/60 text-sm">
           <div className="flex items-center gap-2">
-            <div className="flex items-center">
-              <span className="text-xl font-black tracking-tighter text-[#39FF14]">K</span>
-              <span className="text-xl font-black tracking-tight text-white">TMR</span>
-            </div>
+            <span className="text-xl font-black text-[#39FF14]">K</span>
+            <span className="text-xl font-black text-white">TMR</span>
             <span className="ml-2">© 2026 Todos os direitos reservados.</span>
           </div>
           <p>Transformando eventos em grandes experiências.</p>
         </div>
       </footer>
-
-      {/* MODAL DE PROJETOS */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#05331b] border border-white/10 rounded-3xl max-w-2xl w-full overflow-hidden relative shadow-2xl">
-            <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full z-10 transition-all">
-              <X className="w-5 h-5" />
-            </button>
-            <div className="h-72 overflow-hidden relative">
-              <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
-            </div>
-            <div className="p-8 space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-[#39FF14] font-bold">{selectedProject.category}</span>
-                <span className="bg-white/10 px-3 py-1 rounded-md text-xs font-bold text-white border border-white/10">{selectedProject.size}</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
-              <p className="text-white/70 leading-relaxed">{selectedProject.description}</p>
-              <div className="pt-4">
-                <button onClick={() => { setSelectedProject(null); setActiveTab('contato'); }} className="w-full bg-[#39FF14] hover:bg-[#32e011] text-slate-950 font-bold py-3.5 rounded-xl transition-all shadow-md">
-                  Solicitar Projeto Semelhante
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
     </div>
   );
