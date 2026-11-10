@@ -24,10 +24,10 @@ export default function App() {
   });
 
   const categoryImages = {
-    basicos: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80',
-    montados: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
-    especiais: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80',
-    instagramaveis: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80'
+    basicos: 'stand-1.jpg',
+    montados: 'stand-2.jpg',
+    especiais: 'stand-3.jpg',
+    instagramaveis: 'stand-4.jpg'
   };
 
   const projects = [
