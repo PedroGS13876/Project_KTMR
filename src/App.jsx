@@ -3,7 +3,7 @@ import {
   Building2, Layers, Image as ImageIcon, Leaf, Phone, Menu, X, 
   CheckCircle, ArrowRight, Star, ChevronRight, Send, Sparkles, 
   ShieldCheck, Clock, Award, Check, Target, Compass, Users, ArrowDown,
-  Recycle, Zap, Truck, TreePine
+  Recycle, Zap, Truck, TreePine, MessageCircle
 } from 'lucide-react';
 
 export default function App() {
@@ -23,7 +23,6 @@ export default function App() {
     whatsapp: ''
   });
 
-  // Imagens baseadas nos modelos oficiais
   const categoryImages = {
     basicos: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80',
     montados: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
@@ -53,19 +52,28 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0B0F0D] text-white font-sans selection:bg-[#39FF14] selection:text-black overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#0B0F0D] text-white font-sans selection:bg-[#39FF14] selection:text-black overflow-x-hidden relative">
       
+      {/* BOTÃO FLUTUANTE DE WHATSAPP */}
+      <a 
+        href="https://wa.me/554599224000?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20stands%20da%20KTMR." 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.5)] transition-all transform hover:scale-110 flex items-center justify-center"
+        title="Fale conosco no WhatsApp"
+      >
+        <MessageCircle className="w-7 h-7 fill-current" />
+      </a>
+
       {/* HEADER / NAVEGAÇÃO */}
-      <header className="sticky top-0 z-50 bg-[#0B0F0D]/90 backdrop-blur-md border-b border-white/10">
+      <header className="sticky top-0 z-40 bg-[#0B0F0D]/90 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          {/* LOGO KTMR */}
           <div className="flex items-center gap-1 cursor-pointer" onClick={() => setActiveTab('home')}>
             <span className="text-3xl font-black tracking-tighter text-[#39FF14]">K</span>
             <span className="text-3xl font-black tracking-tight text-white">TMR</span>
           </div>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-white/80">
             {['home', 'quemsomos', 'categorias', 'galeria', 'sustentabilidade', 'contato'].map((tab) => (
               <button
@@ -87,13 +95,11 @@ export default function App() {
             </button>
           </div>
 
-          {/* Mobile menu button */}
           <button className="md:hidden text-white hover:text-[#39FF14]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
 
-        {/* Mobile Nav Drawer */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-[#0B0F0D] border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
             {['home', 'quemsomos', 'categorias', 'galeria', 'sustentabilidade', 'contato'].map((tab) => (
@@ -109,20 +115,17 @@ export default function App() {
         )}
       </header>
 
-      {/* CONTEÚDO DINÂMICO DAS PÁGINAS */}
+      {/* CONTEÚDO DINÂMICO */}
       <main className="flex-grow">
         
-        {/* 1. HOME */}
         {activeTab === 'home' && (
           <div>
-            {/* HERO SECTION COM GLOW NEON E ESTILO PRETO ELEGANTE */}
             <section 
               className="relative min-h-[85vh] flex flex-col justify-center items-center px-4 py-20 bg-cover bg-center overflow-hidden border-b border-white/10"
               style={{ 
                 backgroundImage: `linear-gradient(to right, rgba(11, 15, 13, 0.95), rgba(6, 64, 43, 0.75)), url('${categoryImages.montados}')` 
               }}
             >
-              {/* Efeitos Glow Neon no Fundo */}
               <div className="absolute top-10 left-10 w-96 h-96 bg-[#39FF14]/15 rounded-full blur-[140px] pointer-events-none"></div>
               <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#06402B] rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -153,14 +156,11 @@ export default function App() {
               </div>
             </section>
 
-            {/* SEÇÃO AS NOSSAS CATEGORIAS NA HOME */}
             <section className="py-20 bg-[#0B0F0D] relative">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-                <div className="flex justify-between items-end">
-                  <div>
-                    <span className="text-[#39FF14] font-bold text-xs uppercase tracking-widest">Modelos Disponíveis</span>
-                    <h2 className="text-3xl font-extrabold text-white">As Nossas Categorias</h2>
-                  </div>
+                <div>
+                  <span className="text-[#39FF14] font-bold text-xs uppercase tracking-widest">Modelos Disponíveis</span>
+                  <h2 className="text-3xl font-extrabold text-white">As Nossas Categorias</h2>
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -187,7 +187,6 @@ export default function App() {
               </div>
             </section>
 
-            {/* SEÇÃO CASES DE SUCESSO NA HOME */}
             <section className="py-20 bg-[#07140E] border-t border-white/10 relative">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
                 <span className="text-[#39FF14] font-bold text-xs uppercase tracking-widest">Portfólio em Destaque</span>
@@ -210,11 +209,9 @@ export default function App() {
                 </div>
               </div>
             </section>
-
           </div>
         )}
 
-        {/* 2. QUEM SOMOS */}
         {activeTab === 'quemsomos' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -256,7 +253,6 @@ export default function App() {
           </div>
         )}
 
-        {/* 3. CATEGORIAS */}
         {activeTab === 'categorias' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -284,7 +280,6 @@ export default function App() {
           </div>
         )}
 
-        {/* 4. GALERIA DE PROJETOS */}
         {activeTab === 'galeria' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -309,7 +304,6 @@ export default function App() {
           </div>
         )}
 
-        {/* 5. SUSTENTABILIDADE ENRIQUECIDA E DETALHADA */}
         {activeTab === 'sustentabilidade' && (
           <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -320,14 +314,13 @@ export default function App() {
               </p>
             </div>
             
-            {/* 4 Pilares da Sustentabilidade */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-[#121A15] p-6 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all relative overflow-hidden group">
                 <div className="w-12 h-12 bg-[#39FF14]/10 rounded-xl flex items-center justify-center text-[#39FF14] mb-4">
                   <Recycle className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Estruturas Modulares</h3>
-                <p className="text-white/70 text-xs leading-relaxed">Sistemas reaproveitáveis de alumínio e marcenaria inteligente projetados para múltiplos eventos, eliminando o descarte desnecessário.</p>
+                <p className="text-white/70 text-xs leading-relaxed">Sistemas reaproveitáveis de alumínio e marcenaria inteligente projetados para múltiplos eventos.</p>
               </div>
 
               <div className="bg-[#121A15] p-6 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all relative overflow-hidden group">
@@ -335,7 +328,7 @@ export default function App() {
                   <Zap className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Iluminação EcoLED</h3>
-                <p className="text-white/70 text-xs leading-relaxed">100% dos projetos utilizam iluminação LED de alta eficiência energética, reduzindo a demanda elétrica no pavilhão em até 70%.</p>
+                <p className="text-white/70 text-xs leading-relaxed">100% dos projetos utilizam iluminação LED de alta eficiência energética, reduzindo o consumo.</p>
               </div>
 
               <div className="bg-[#121A15] p-6 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all relative overflow-hidden group">
@@ -343,7 +336,7 @@ export default function App() {
                   <TreePine className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Madeira Certificada</h3>
-                <p className="text-white/70 text-xs leading-relaxed">Madeiras e painéis compostos oriundos exclusivamente de áreas de reflorestamento com selo de cadeia de custódia ambiental.</p>
+                <p className="text-white/70 text-xs leading-relaxed">Madeiras e painéis oriundos exclusivamente de áreas de reflorestamento sustentável.</p>
               </div>
 
               <div className="bg-[#121A15] p-6 rounded-2xl border border-white/10 hover:border-[#39FF14] transition-all relative overflow-hidden group">
@@ -351,11 +344,10 @@ export default function App() {
                   <Truck className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Logística Reversa</h3>
-                <p className="text-white/70 text-xs leading-relaxed">Triagem rigorosa após a desmontagem: sobras de marcenaria e materiais recicláveis são destinados a cooperativas parceiras.</p>
+                <p className="text-white/70 text-xs leading-relaxed">Triagem rigorosa pós-desmontagem com destinação correta de sobras e materiais recicláveis.</p>
               </div>
             </div>
 
-            {/* Banner de Destaque Verde */}
             <div className="bg-gradient-to-r from-[#06402B] to-[#121A15] border border-[#39FF14]/40 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
               <div className="space-y-4 max-w-2xl z-10">
                 <span className="text-[#39FF14] font-bold text-xs uppercase tracking-widest">Sua Marca Com Propósito</span>
@@ -374,13 +366,22 @@ export default function App() {
           </div>
         )}
 
-        {/* 6. CONTATO & SIMULADOR */}
         {activeTab === 'contato' && (
           <div className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-[#121A15] border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl">
-              <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+              <div className="text-center max-w-2xl mx-auto mb-8 space-y-3">
                 <span className="inline-block px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[#39FF14] font-bold text-xs uppercase">Atendimento Personalizado</span>
                 <h2 className="text-3xl font-extrabold text-white">Faça seu Projeto com a KTMR</h2>
+                
+                {/* INDICADOR DE ETAPAS (AS BOLINHAS INTERLIGADAS) RESTAURADO */}
+                <div className="flex items-center justify-center gap-3 pt-4">
+                  <div className={`w-3.5 h-3.5 rounded-full transition-all ${budgetStep >= 1 ? 'bg-[#39FF14] shadow-[0_0_10px_rgba(57,255,20,0.6)]' : 'bg-white/20'}`}></div>
+                  <div className={`w-12 h-1 rounded transition-all ${budgetStep >= 2 ? 'bg-[#39FF14]' : 'bg-white/20'}`}></div>
+                  <div className={`w-3.5 h-3.5 rounded-full transition-all ${budgetStep >= 2 ? 'bg-[#39FF14] shadow-[0_0_10px_rgba(57,255,20,0.6)]' : 'bg-white/20'}`}></div>
+                  <div className={`w-12 h-1 rounded transition-all ${budgetStep >= 3 ? 'bg-[#39FF14]' : 'bg-white/20'}`}></div>
+                  <div className={`w-3.5 h-3.5 rounded-full transition-all ${budgetStep >= 3 ? 'bg-[#39FF14] shadow-[0_0_10px_rgba(57,255,20,0.6)]' : 'bg-white/20'}`}></div>
+                </div>
+
               </div>
 
               <form onSubmit={sendWhatsAppBudget} className="space-y-8">
@@ -469,17 +470,69 @@ export default function App() {
 
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-[#050806] border-t border-white/10 py-10 w-full mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-white/60 text-sm">
+      {/* FOOTER COM TELEFONE E INSTAGRAM */}
+      <footer className="bg-[#050806] border-t border-white/10 py-12 w-full mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-sm">
+          
           <div className="flex items-center gap-2">
-            <span className="text-xl font-black text-[#39FF14]">K</span>
-            <span className="text-xl font-black text-white">TMR</span>
-            <span className="ml-2">© 2026 Todos os direitos reservados.</span>
+            <span className="text-2xl font-black text-[#39FF14]">K</span>
+            <span className="text-2xl font-black text-white">TMR</span>
           </div>
-          <p>Transformando eventos em grandes experiências.</p>
+
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-white/70">
+            <a 
+              href="https://wa.me/554599224000" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[#39FF14] transition-colors font-medium"
+            >
+              <Phone className="w-4 h-4 text-[#39FF14]" /> (45) 9922-4000
+            </a>
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[#39FF14] transition-colors font-medium"
+            >
+              <svg className="w-4 h-4 text-[#39FF14] fill-current" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg> Instagram
+            </a>
+          </div>
+
+          <div className="text-right text-white/50 text-xs md:text-sm">
+            <p>© 2026 KTMR. Todos os direitos reservados.</p>
+          </div>
+
         </div>
       </footer>
+
+      {/* MODAL DE PROJETOS */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[#121A15] border border-white/10 rounded-3xl max-w-2xl w-full overflow-hidden relative shadow-2xl">
+            <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full z-10 transition-all">
+              <X className="w-5 h-5" />
+            </button>
+            <div className="h-72 overflow-hidden relative">
+              <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
+            </div>
+            <div className="p-8 space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs uppercase tracking-wider text-[#39FF14] font-bold">{selectedProject.category}</span>
+                <span className="bg-white/10 px-3 py-1 rounded-md text-xs font-bold text-white border border-white/10">{selectedProject.size}</span>
+              </div>
+              <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
+              <p className="text-white/70 leading-relaxed">{selectedProject.description}</p>
+              <div className="pt-4">
+                <button onClick={() => { setSelectedProject(null); setActiveTab('contato'); }} className="w-full bg-[#39FF14] hover:bg-[#32e011] text-black font-extrabold py-3.5 rounded-full transition-all shadow-md">
+                  Solicitar Projeto Semelhante
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
